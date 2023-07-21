@@ -11,8 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const baseRouter = express.Router();
 
 baseRouter.get('/greeting', (req, res) => {
-    const code = 200;
-    return res.send('Hello World! ' + code);
+    return res.send('Hello World!');
 });
 
 baseRouter.post('/add', (req, res) => {
@@ -24,7 +23,10 @@ baseRouter.post('/add', (req, res) => {
 
 
 baseRouter.post('/subtract', (req, res) => {
-    res.json({ "": null });
+    const num1 = Number(req.body.first);
+    const num2 = Number(req.body.second);
+    const result = num1 - num2;
+    res.json({ "result": result });
 });
 
 app.use(baseUrl, baseRouter);
